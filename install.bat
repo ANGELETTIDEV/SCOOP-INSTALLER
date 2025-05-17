@@ -3,7 +3,7 @@ title Install Script
 color 0a
 
 powershell -Command "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser"
-powershell -Command "Write-Host 'Installing Scoop...' -ForegroundColor Green; Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression"
+powershell -Command "$env:SCOOP='%USERPROFILE%\scoop'; [Environment]::SetEnvironmentVariable('SCOOP', $env:SCOOP, 'User'); Write-Host 'Installing Scoop...' -ForegroundColor Green; Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression"
 
 :install-git
 echo Installing Git...
